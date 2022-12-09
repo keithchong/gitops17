@@ -86,8 +86,6 @@ spec:
       kind: Task
       name: go-test
   - name: build-image
-    runAfter:
-      - go-ci
     params:
     - name: TLSVERIFY
       value: $(params.TLSVERIFY)
@@ -98,7 +96,7 @@ spec:
     - name: IMAGE
       value: $(params.IMAGE)
     runAfter:
-    - clone-source
+      - go-ci
     taskRef:
       kind: ClusterTask
       name: buildah
